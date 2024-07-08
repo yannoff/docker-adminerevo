@@ -10,7 +10,7 @@ fi
 versions=( "${versions[@]%/}" )
 
 read -r commit_hash fullVersion << EOF
-$(git ls-remote --tags https://github.com/vrana/adminer.git \
+$(git ls-remote --tags https://github.com/adminerevo/adminerevo.git \
 	| awk '{gsub(/refs\/tags\/v/, "", $2); print}' \
 	| sort -rVk2 \
 	| head -1)
@@ -24,7 +24,7 @@ for version in "${versions[@]}"; do
 	echo "$version: $fullVersion"
 
 	downloadSha256="$(
-		curl -fsSL "https://github.com/vrana/adminer/releases/download/v${fullVersion}/adminer-${fullVersion}.php" \
+		curl -fsSL "https://github.com/adminerevo/adminerevo/releases/download/v${fullVersion}/adminer-${fullVersion}.php" \
 			| sha256sum \
 			| cut -d' ' -f1
 	)"
