@@ -46,9 +46,9 @@ ENV	ADMINER_COMMIT 1f173e18bdf0be29182e0d67989df56eadea4754
 
 RUN	set -x \
 &&	apk add --no-cache --virtual .build-deps git \
-&&	curl -fsSL "https://github.com/vrana/adminer/releases/download/v$ADMINER_VERSION/adminer-$ADMINER_VERSION.php" -o adminer.php \
+&&	curl -fsSL "https://github.com/adminerevo/adminerevo/releases/download/v$ADMINER_VERSION/adminer-$ADMINER_VERSION.php" -o adminer.php \
 &&	echo "$ADMINER_DOWNLOAD_SHA256  adminer.php" |sha256sum -c - \
-&&	git clone --recurse-submodules=designs --depth 1 --shallow-submodules --branch "v$ADMINER_VERSION" https://github.com/vrana/adminer.git /tmp/adminer \
+&&	git clone --recurse-submodules=designs --depth 1 --shallow-submodules --branch "v$ADMINER_VERSION" https://github.com/adminerevo/adminerevo.git /tmp/adminer \
 &&	commit="$(git -C /tmp/adminer/ rev-parse HEAD)" \
 &&	[ "$commit" = "$ADMINER_COMMIT" ] \
 &&	cp -r /tmp/adminer/designs/ /tmp/adminer/plugins/ . \
